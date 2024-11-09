@@ -31,14 +31,14 @@ const Header = () => {
   };
 
   return (
-    <div className='container py-5 flex justify-between items-center'>
+    <div className='p-4 flex justify-between items-center'>
       {/* Logo */}
       <div className='font-bold text-xl text-black hover-pointer ml-10'>
         <Link to='/'>Env AI</Link>
       </div>
       {/* Search */}
       <form className='h-[40px] w-[30%]' onSubmit={handleSubmit}>
-        <div className='h-full w-full px-3 flex justify-start items-center bg-neutral-50 border rounded-full text-black text-sm'>
+        <div className='h-full w-full px-3 flex justify-start items-center bg-neutral-50 rounded-full text-black text-sm'>
           <BiSearch className='mr-2' />
           <input
             className='h-full w-full rounded-full outline-none bg-neutral-50 text-black'
@@ -53,9 +53,9 @@ const Header = () => {
       <div className='flex justify-end items-center gap-4'>
         {location.pathname === '/prediction-details' ? null : (
           <Link
-            className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-blue-100 text-sm cursor-pointer'
+            className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-white text-sm cursor-pointer'
             onClick={() => setAqiClk(false)}
-            to='prediction-details'
+            to='prediction'
           >
             Prediction Detail
           </Link>
