@@ -59,7 +59,7 @@ const Header = ({ searchBarShow }) => {
             onClick={() => setAqiClk(false)}
             to='prediction'
           >
-            Prediction Detail
+            Prediction
           </Link>
         )}
       </div>
