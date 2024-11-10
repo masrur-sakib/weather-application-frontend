@@ -130,7 +130,7 @@ function Predict() {
               Prediction Result
             </h2>
             <p>Temperature: {result?.temperature}</p>
-            <p>Precipitation: {result?.precipitation}</p>
+            <p>Precipitation: {Math.abs(result?.precipitation)}</p>
           </div>
         )}
       </div>
