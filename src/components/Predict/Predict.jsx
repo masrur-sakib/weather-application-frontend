@@ -194,7 +194,8 @@ function Predict() {
               <div className='p-2 text-center border border-blue-300'>
                 <p className='mb-1 text-md text-black'>Precipitation</p>
                 <p className='text-xl'>
-                  {Math.abs(result?.precipitation.toFixed(2)) * 100}%
+                  {Math.abs(result?.precipitation).toFixed(2)}
+                  {/* {(Math.abs(result?.precipitation) * 100).toFixed(2)}% */}
                 </p>
               </div>
             </div>
