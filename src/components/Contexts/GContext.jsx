@@ -66,7 +66,6 @@ export const GProvider = ({ children }) => {
         await fetch(url1)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             setJsonData(data);
           })
           .catch((error) => console.error(error));
