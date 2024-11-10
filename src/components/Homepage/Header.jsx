@@ -2,10 +2,10 @@ import { useContext, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import GContext from '../Contexts/GContext';
-const APIKEY = 'e125d116dfcc4d74a1506c3e90c01191';
+const APIKEY = '60fddad1a66b4259a400bd0692258fcf';
 import { useLocation } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ searchBarShow }) => {
   const { setCountry, setLocation, setLongitude, setLatitude, setAqiClk } =
     useContext(GContext);
   const [srcLoc, setSrcLoc] = useState('');
@@ -37,19 +37,21 @@ const Header = () => {
         <Link to='/'>Env AI</Link>
       </div>
       {/* Search */}
-      <form className='h-[40px] w-[30%]' onSubmit={handleSubmit}>
-        <div className='h-full w-full px-3 flex justify-start items-center bg-neutral-50 rounded-full text-black text-sm'>
-          <BiSearch className='mr-2' />
-          <input
-            className='h-full w-full rounded-full outline-none bg-neutral-50 text-black'
-            type='text'
-            id='searchCity'
-            placeholder='Search City...'
-            value={srcLoc}
-            onChange={(e) => setSrcLoc(e.target.value)}
-          />
-        </div>
-      </form>
+      {searchBarShow && (
+        <form className='h-[40px] w-[30%]' onSubmit={handleSubmit}>
+          <div className='h-full w-full px-3 flex justify-start items-center bg-neutral-50 rounded-full text-black text-sm'>
+            <BiSearch className='mr-2' />
+            <input
+              className='h-full w-full rounded-full outline-none bg-neutral-50 text-black'
+              type='text'
+              id='searchCity'
+              placeholder='Search City...'
+              value={srcLoc}
+              onChange={(e) => setSrcLoc(e.target.value)}
+            />
+          </div>
+        </form>
+      )}
       <div className='flex justify-end items-center gap-4'>
         {location.pathname === '/prediction-details' ? null : (
           <Link

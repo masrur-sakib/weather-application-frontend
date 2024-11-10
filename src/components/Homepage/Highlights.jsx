@@ -130,7 +130,7 @@ const Highlights = () => {
             <div className='flex justify-start items-center gap-10'>
               <div className='flex flex-col h-full'>
                 <div className='text-black text-md mb-2'>
-                  {location} AQI Index{' '}
+                  <span className='capitalize'>{location}</span> AQI Index{' '}
                 </div>
                 <div className='text-black text-xl my-[10px]'>
                   {aqiData?.aqi}{' '}

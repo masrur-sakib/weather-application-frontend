@@ -1,14 +1,14 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 import {
   findMainObjectsForUniqueDates,
   findMainObjectForTodaysDates,
-} from "../Utils";
-const APIKEY = "e125d116dfcc4d74a1506c3e90c01191";
+} from '../Utils';
+const APIKEY = '60fddad1a66b4259a400bd0692258fcf';
 const GContext = createContext({});
-const domain = "http://127.0.0.1:8000";
+const domain = 'http://127.0.0.1:8000';
 
 export const GProvider = ({ children }) => {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState('');
   const [highlightedData, sethighlightedData] = useState();
   const [longitude, setLongitude] = useState();
   const [latitude, setLatitude] = useState();
@@ -17,7 +17,7 @@ export const GProvider = ({ children }) => {
   const [country, setCountry] = useState();
   const [aqiData, setAqiData] = useState();
   const [startDate, setStartDate] = useState(
-    new Date("2023-09-20T05:00:00.000Z")
+    new Date('2023-09-20T05:00:00.000Z')
   );
 
   const [aqiClk, setAqiClk] = useState(false);
@@ -33,7 +33,7 @@ export const GProvider = ({ children }) => {
           setLocation(data.results[0].components.city);
           setCountry(data.results[0].components.country_code);
         } else {
-          alert("Geolocation request failed.");
+          alert('Geolocation request failed.');
         }
       })
       .catch((error) => console.error(error));
@@ -102,22 +102,22 @@ export const GProvider = ({ children }) => {
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.permissions
-        .query({ name: "geolocation" })
+        .query({ name: 'geolocation' })
         .then(function (result) {
-          if (result.state === "granted") {
+          if (result.state === 'granted') {
             //If granted then you can directly call your function here
             navigator.geolocation.getCurrentPosition(success, errors, options);
-          } else if (result.state === "prompt") {
+          } else if (result.state === 'prompt') {
             //If prompt then the user will be asked to give permission
             navigator.geolocation.getCurrentPosition(success, errors, options);
-          } else if (result.state === "denied") {
-            console.log("dined call");
+          } else if (result.state === 'denied') {
+            console.log('dined call');
             getLocationInfo(23.7644025, 90.389015);
             //If denied then you have to show instructions to enable location
           }
         });
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.');
       getLocationInfo(23.7644025, 90.389015);
     }
   }, []);

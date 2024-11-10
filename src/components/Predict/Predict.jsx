@@ -26,7 +26,7 @@ function Predict() {
 
   return (
     <div>
-      <Header />
+      <Header searchBarShow={false} />
       <hr className='border-slate-400' />
       <div className='container p-8 bg-blue-200 flex justify-center items-start gap-4'>
         <div>
