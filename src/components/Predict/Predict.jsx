@@ -28,7 +28,7 @@ function Predict() {
     } else if (!formData.hour) {
       alert('Please select time.');
     } else {
-      const response = await fetch('http://127.0.0.1:8000/predict', {
+      fetch('http://127.0.0.1:8000/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -37,9 +37,13 @@ function Predict() {
           day: day,
           hour: formData.hour,
         }),
-      });
-      const data = await response.json();
-      setResult(data);
+      })
+        .then((response) => response.json())
+        .then((data) => setResult(data))
+        .catch((error) => {
+          console.error(error);
+          alert(`Couldn't connect with the Backend Server.`);
+        });
     }
   };
 
@@ -139,6 +143,7 @@ function Predict() {
                   <option value='' disabled>
                     Select a time
                   </option>
+                  <option value={0}>12 AM</option>
                   <option value={1}>1 AM</option>
                   <option value={2}>2 AM</option>
                   <option value={3}>3 AM</option>
@@ -162,7 +167,6 @@ function Predict() {
                   <option value={21}>9 PM</option>
                   <option value={22}>10 PM</option>
                   <option value={23}>11 PM</option>
-                  <option value={0}>12 AM</option>
                 </select>
               </div>
             </div>
