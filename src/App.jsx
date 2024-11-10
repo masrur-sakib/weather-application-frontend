@@ -9,8 +9,8 @@ function App() {
     <div className='min-h-screen bg-blue-200'>
       <GProvider>
         <Routes>
-          <Route path='/' element={<Homepage />}></Route>
-          <Route path='/prediction' element={<Predict />}></Route>
+          <Route path='/' element={<Predict />}></Route>
+          <Route path='/summary' element={<Homepage />}></Route>
         </Routes>
       </GProvider>
     </div>

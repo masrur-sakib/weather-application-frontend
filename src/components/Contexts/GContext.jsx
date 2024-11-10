@@ -5,7 +5,7 @@ import {
 } from '../Utils';
 const APIKEY = '60fddad1a66b4259a400bd0692258fcf';
 const GContext = createContext({});
-const domain = 'http://127.0.0.1:8000';
+// const domain = 'http://127.0.0.1:8000';
 
 export const GProvider = ({ children }) => {
   const [location, setLocation] = useState('');
@@ -66,6 +66,7 @@ export const GProvider = ({ children }) => {
         await fetch(url1)
           .then((response) => response.json())
           .then((data) => {
+            console.log(data);
             setJsonData(data);
           })
           .catch((error) => console.error(error));
@@ -122,18 +123,18 @@ export const GProvider = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const url = `${domain}/forecastDate`;
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (aqiClk) {
-          setStartDate(new Date(data.lastDateAqi));
-        } else {
-          setStartDate(new Date(data.lastDate));
-        }
-      });
-  }, [aqiClk]);
+  // useEffect(() => {
+  //   const url = `${domain}/forecastDate`;
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (aqiClk) {
+  //         setStartDate(new Date(data.lastDateAqi));
+  //       } else {
+  //         setStartDate(new Date(data.lastDate));
+  //       }
+  //     });
+  // }, [aqiClk]);
 
   useEffect(() => {
     sethighlightedData(findMainObjectsForUniqueDates(jsonData));

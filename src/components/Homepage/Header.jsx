@@ -52,17 +52,19 @@ const Header = ({ searchBarShow }) => {
           </div>
         </form>
       )}
-      <div className='flex justify-end items-center gap-4'>
-        {location.pathname === '/prediction-details' ? null : (
-          <Link
-            className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-white text-sm cursor-pointer'
-            onClick={() => setAqiClk(false)}
-            to='prediction'
-          >
-            Prediction
-          </Link>
-        )}
-      </div>
+      {searchBarShow && (
+        <div className='flex justify-end items-center gap-4'>
+          {location.pathname === '/prediction-details' ? null : (
+            <Link
+              className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-white text-sm cursor-pointer'
+              onClick={() => setAqiClk(false)}
+              to='/'
+            >
+              Home
+            </Link>
+          )}
+        </div>
+      )}
     </div>
   );
 };
