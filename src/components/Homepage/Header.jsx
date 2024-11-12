@@ -5,7 +5,7 @@ import GContext from '../Contexts/GContext';
 const APIKEY = '60fddad1a66b4259a400bd0692258fcf';
 import { useLocation } from 'react-router-dom';
 
-const Header = ({ searchBarShow }) => {
+const Header = ({ searchBarShow, link }) => {
   const { setCountry, setLocation, setLongitude, setLatitude, setAqiClk } =
     useContext(GContext);
   const [srcLoc, setSrcLoc] = useState('');
@@ -61,6 +61,30 @@ const Header = ({ searchBarShow }) => {
               to='/'
             >
               Home
+            </Link>
+          )}
+        </div>
+      )}
+      {link === 'flood-link' ? (
+        <div className='flex justify-end items-center gap-4'>
+          {location.pathname === '/prediction-details' ? null : (
+            <Link
+              className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-white text-sm cursor-pointer'
+              onClick={() => setAqiClk(false)}
+              to='/flood-prediction'
+            >
+              Flood Prediction
+            </Link>
+          )}
+        </div>
+      ) : (
+        <div className='flex justify-end items-center gap-4'>
+          {location.pathname === '/prediction-details' ? null : (
+            <Link
+              className='flex justify-center items-center text-black rounded-full w-[180px] py-1 bg-white text-sm cursor-pointer'
+              to='/'
+            >
+              Temperature Prediction
             </Link>
           )}
         </div>

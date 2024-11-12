@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Predict() {
+function TemperaturePrediction() {
   const [formData, setFormData] = useState({
     date: null,
     hour: '',
@@ -43,7 +43,7 @@ function Predict() {
 
   return (
     <div>
-      <Header searchBarShow={false} />
+      <Header link='flood-link' />
       <hr className='border-slate-400' />
       <div className='container pt-16 p-8 bg-blue-200 flex justify-center items-start gap-4'>
         <div>
@@ -53,7 +53,7 @@ function Predict() {
             onSubmit={handleSubmit}
           >
             <h2 className='mb-4 text-xl text-blue-500 font-semibold text-center'>
-              Prediction Request
+              Temperature Prediction Request
             </h2>
             {/* Date */}
             <div className='mt-2 sm:col-span-3'>
@@ -178,7 +178,7 @@ function Predict() {
         {result && (
           <div className='p-8 mb-4 w-96 min-h-80 bg-blue-100 border border-gray-300 rounded-md'>
             <h2 className='mb-4 text-xl text-blue-500 font-semibold text-center'>
-              Prediction Result
+              Temperature Prediction Result
             </h2>
             <div className='flex justify-center item-center gap-4'>
               <div className='p-2 text-center border border-blue-300'>
@@ -200,4 +200,4 @@ function Predict() {
   );
 }
 
-export default Predict;
+export default TemperaturePrediction;
