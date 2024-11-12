@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import Homepage from './components/Homepage/Homepage';
 import './App.css';
 import { GProvider } from './components/Contexts/GContext';
 import TemperaturePrediction from './components/Prediction/TemperaturePrediction';
@@ -12,7 +11,6 @@ function App() {
         <Routes>
           <Route path='/' element={<TemperaturePrediction />}></Route>
           <Route path='/flood-prediction' element={<FloodPrediction />}></Route>
-          <Route path='/summary' element={<Homepage />}></Route>
         </Routes>
       </GProvider>
     </div>
