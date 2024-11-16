@@ -7,7 +7,7 @@ import HourlyPredictions from './HourlyPredictions';
 const Homepage = () => {
   return (
     <div>
-      <Header searchBarShow={true} />
+      <Header searchBarShow={true} link='home-link' />
       <hr className='border-slate-400' />
       <div className='container flex justify-between items-start py-5'>
         {/* Left Section */}

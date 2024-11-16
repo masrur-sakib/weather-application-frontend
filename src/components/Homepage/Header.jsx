@@ -3,13 +3,11 @@ import { BiSearch } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import GContext from '../Contexts/GContext';
 const APIKEY = '60fddad1a66b4259a400bd0692258fcf';
-import { useLocation } from 'react-router-dom';
 
 const Header = ({ searchBarShow, link }) => {
-  const { setCountry, setLocation, setLongitude, setLatitude, setAqiClk } =
+  const { setCountry, setLocation, setLongitude, setLatitude } =
     useContext(GContext);
   const [srcLoc, setSrcLoc] = useState('');
-  const location = useLocation();
   const handleSubmit = (event) => {
     event.preventDefault();
     setLocation(srcLoc);
@@ -38,7 +36,7 @@ const Header = ({ searchBarShow, link }) => {
       </div>
       {/* Search */}
       {searchBarShow && (
-        <form className='h-[40px] w-[30%]' onSubmit={handleSubmit}>
+        <form className='h-[35px] w-[30%]' onSubmit={handleSubmit}>
           <div className='h-full w-full px-3 flex justify-start items-center bg-neutral-50 rounded-full text-black text-sm'>
             <BiSearch className='mr-2' />
             <input
@@ -52,30 +50,32 @@ const Header = ({ searchBarShow, link }) => {
           </div>
         </form>
       )}
-      {link === 'flood-link' ? (
-        <div className='flex justify-end items-center gap-4'>
-          {location.pathname === '/prediction-details' ? null : (
-            <Link
-              className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-white text-sm cursor-pointer'
-              onClick={() => setAqiClk(false)}
-              to='/flood-prediction'
-            >
-              Flood Prediction
-            </Link>
-          )}
-        </div>
-      ) : (
-        <div className='flex justify-end items-center gap-4'>
-          {location.pathname === '/prediction-details' ? null : (
-            <Link
-              className='flex justify-center items-center text-black rounded-full w-[180px] py-1 bg-white text-sm cursor-pointer'
-              to='/'
-            >
-              Temperature Prediction
-            </Link>
-          )}
-        </div>
-      )}
+      <div className='flex justify-end items-center gap-4'>
+        {link !== 'home-link' && (
+          <Link
+            className='flex justify-center items-center text-black rounded-full w-[100px] py-1 bg-white text-sm cursor-pointer'
+            to='/'
+          >
+            Home
+          </Link>
+        )}
+
+        {link === 'flood-link' ? (
+          <Link
+            className='flex justify-center items-center text-black rounded-full w-[150px] py-1 bg-white text-sm cursor-pointer'
+            to='/flood-prediction'
+          >
+            Flood Prediction
+          </Link>
+        ) : (
+          <Link
+            className='flex justify-center items-center text-black rounded-full w-[180px] py-1 bg-white text-sm cursor-pointer'
+            to='/temperature-prediction'
+          >
+            Temperature Prediction
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
